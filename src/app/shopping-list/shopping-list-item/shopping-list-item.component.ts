@@ -10,6 +10,9 @@ export class ShoppingListItemComponent implements OnInit {
 
   //O nome da variável é listItem e o nome do parâmetro é item
   @Input("shoppingItem") private listItem: any;
+  
+  //É do componente, o objeto não vai ter essa variável
+  public deleted: boolean = false;
 
   constructor(private myShoppingListService: ShoppingListService) {    
    }
@@ -17,7 +20,15 @@ export class ShoppingListItemComponent implements OnInit {
   //Hook para click de vida
   //Sempre que o componente for construído ou iniciado.
   ngOnInit() {
-    console.log(this.listItem);
+    // console.log(this.listItem);
   }
 
+  public removeItem() {
+    this.myShoppingListService.remove(this.listItem).subscribe(
+      response => {
+        console.log("o item foi excluído!");
+        this.deleted = true;
+      }
+    );
+  }
 }

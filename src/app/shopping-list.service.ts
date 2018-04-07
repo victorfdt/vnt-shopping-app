@@ -25,6 +25,8 @@ export class ShoppingListService {
     }];
   }
 
+  //Importante: o Firebase exige o final como .json
+
   //Observable é o retorno
   public findAll(): Observable<Object> {
     return this.httpClient.get(`${environment.firebase.databaseURL}/items.json`);
@@ -37,8 +39,7 @@ export class ShoppingListService {
   }
 
   public remove(item){
-    let index = this.listItems.indexOf(item);
-    this.listItems.splice(index, 1);
+    return this.httpClient.delete(`${environment.firebase.databaseURL}/items/${item.key}.json`);
   }
 
   public cross(item) {
