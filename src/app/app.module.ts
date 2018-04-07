@@ -10,6 +10,7 @@ import { ShoppingListItemComponent } from './shopping-list/shopping-list-item/sh
 import { ShoppingListService } from './shopping-list.service';
 import { RouterModule } from '@angular/router';
 import { AboutComponent } from './about/about.component';
+import { AuthService } from './auth.service';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { AboutComponent } from './about/about.component';
     RouterModule.forRoot(APP_ROUTE)
   ],
   providers: [
+    AuthService,
     ShoppingListService
   ],
   bootstrap: [AppComponent]
