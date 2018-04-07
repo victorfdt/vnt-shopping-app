@@ -2,40 +2,40 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../environments/environment';
 import { Observable } from 'rxjs/Observable';
+import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 
 @Injectable()
 export class ShoppingListService {
-
+  
   private listItems: Array<any>;
 
-  //Injeção de dependências httpClient: HttpClient
-  constructor(private httpClient: HttpClient) { 
-    this.listItems =[{
-      name: 'Bread',
-      disabled: false
-    },{
-      name: 'Butter',
-      disabled: false
-    },{
-      name: 'Coffee',
-      disabled: false
-    },{
-      name: 'Cookies',
-      disabled: true
-    }];
+  //Com o angularfire eu trabalho com Obervables e não com array
+  public listItemsFirebase: Observable<any[]>;
+  private listItemsRef: AngularFireList<any>;
+
+  //Injeção de dependências private httpClient: HttpClient eprivate db: AngularFireDatabase
+  constructor(private httpClient: HttpClient, private db: AngularFireDatabase) { 
+    this.listItems =[];
+    this.listItemsRef = this.db.list('items');
+
+    //snapshotChanges = fica observando as modificações feitas na lista
+    this.listItemsFirebase = this.listItemsRef.snapshotChanges().map(
+      changes => {
+        return changes.map( c => {
+            console.log(c.payload.val());
+            return {
+              key: c.payload.key,
+              name: c.payload.val()['name'],
+              disabled: c.payload.val()['disabled'],
+            }
+          }
+        ).reverse();
+      }
+    );
   }
 
-  //Importante: o Firebase exige o final como .json
-
-  //Observable é o retorno
-  public findAll(): Observable<Object> {
-    return this.httpClient.get(`${environment.firebase.databaseURL}/items.json`);
-  }
-
-  public add(item): Observable<Object>{
-    //A crase ativa o modulo de interpolação
-    //=> forma sucinta de declarar funções
-    return this.httpClient.post(`${environment.firebase.databaseURL}/items.json`, item);
+  public add(item){
+    this.listItemsRef.push(item);
   }
 
   public remove(item){

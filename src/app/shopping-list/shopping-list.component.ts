@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ShoppingListService } from '../shopping-list.service';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-shopping-list',
@@ -8,34 +9,15 @@ import { ShoppingListService } from '../shopping-list.service';
 })
 export class ShoppingListComponent implements OnInit {
 
-  public list: Array<any>;
+  public list: Observable<any[]>;
 
   private itemToAdd: string = '';
-
-  constructor(private myShoppingListService: ShoppingListService) {    
+  
+  constructor(private myShoppingListService: ShoppingListService) {
   }
 
   ngOnInit() {
-    //Isso agora retorna um Observable
-    //Object.keys = retorna o nome de todas as propriedades de um objeto
-    //map é uma função que passa item a item e faz alguma coisa com o valor
-    //Essa abordagem é necessária porque o firebase não trabalha com array, só com objeto
-    this.myShoppingListService.findAll().subscribe(
-      response => {
-        if(response) {
-          this.list = Object.keys(response).map(id => {
-            let item: any = response[id];
-            item.key = id;
-            return item;
-          })
-        } else {
-          this.list = [];
-        }
-      },
-      error => { console.log(error) }
-    )
-
-    console.log(this.list);
+    this.list = this.myShoppingListService.listItemsFirebase;
   }
 
   private addObjectToList(){
@@ -44,17 +26,10 @@ export class ShoppingListComponent implements OnInit {
       name: this.itemToAdd,
       disabled: false
     }
+    
+    //Adicionar    
+    this.myShoppingListService.add(newItem);
 
-    //Adicionar
-    //O response['name'] retorna o id
-    this.myShoppingListService.add(newItem).subscribe(
-      response => {
-        console.log(response);
-        newItem['key'] = response['name'];
-        this.list.unshift(newItem); 
-      },
-      error => { console.error('Erro'); }
-    );
     this.itemToAdd = '';
   }
 
