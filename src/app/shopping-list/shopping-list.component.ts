@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ShoppingListService } from '../shopping-list.service';
 
 @Component({
   selector: 'app-shopping-list',
@@ -7,25 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShoppingListComponent implements OnInit {
 
-  private listItems: Array<any>;
+  public list: Array<any>;
 
-  constructor() { 
-    this.listItems =[{
-      name: 'Bread',
-      disabled: false
-    },{
-      name: 'Butter',
-      disabled: false
-    },{
-      name: 'Coffee',
-      disabled: false
-    },{
-      name: 'Cookies',
-      disabled: true
-    }];
+  constructor(private myShoppingListService: ShoppingListService) {    
   }
 
   ngOnInit() {
+    this.list = this.myShoppingListService.findAll();
+    console.log(this.list);
   }
 
 }
