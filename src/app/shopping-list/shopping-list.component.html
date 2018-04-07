@@ -1,7 +1,9 @@
 <form>
   <div class="input-group mt-3">
-    <input type="text" class="form-control" placeholder="Item name">
-    <button type="submit" class="btn btn-primary">Add</button>
+    <!-- two way data bind =  [(ngModel)]-->
+    <input type="text" class="form-control" placeholder="Item name" [(ngModel)]="itemToAdd" name="myInput">
+    <button type="submit" class="btn btn-primary"
+        (click)="addObjectToList()">Add</button>
   </div>
 </form>
 
