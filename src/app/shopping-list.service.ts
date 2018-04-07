@@ -42,9 +42,8 @@ export class ShoppingListService {
     return this.httpClient.delete(`${environment.firebase.databaseURL}/items/${item.key}.json`);
   }
 
-  public cross(item) {
-    let index = this.listItems.indexOf(item);
-    this.listItems[index].disabled = true;
+  public edit(item) {
+    return this.httpClient.put(`${environment.firebase.databaseURL}/items/${item.key}.json`, item);
   }
 
 }
