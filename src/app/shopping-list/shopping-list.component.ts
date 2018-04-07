@@ -7,7 +7,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShoppingListComponent implements OnInit {
 
-  constructor() { }
+  private listItems: Array<any>;
+
+  constructor() { 
+    this.listItems =[{
+      name: 'Bread',
+      disabled: false
+    },{
+      name: 'Butter',
+      disabled: false
+    },{
+      name: 'Coffee',
+      disabled: false
+    },{
+      name: 'Cookies',
+      disabled: false
+    }];
+  }
 
   ngOnInit() {
   }
