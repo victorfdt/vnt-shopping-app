@@ -1,6 +1,20 @@
 <div class="container-fluid">
-  <app-header></app-header>
-  <div class="content">    
-    <router-outlet></router-outlet>
+  <!-- 
+    as user: nomeando o resultado.
+    else showLogin: caso de errado, ele faz isso. E o showLogin vai mostrar o template
+   -->
+  <div *ngIf="authService.afAuth.authState | async as user; else showLogin">
+    <p>Hi {{ user.displayName }}! <button class="btn btn-primary" (click)="logout()">Logout</button> </p>
+  
+    <app-header></app-header>
+    <div class="content">
+      <!-- Navegar entre as paginas sem ter que dar reload-->
+      <router-outlet></router-outlet>
+    </div>
   </div>
+
+  <!-- ng-template: html solto sem controle de logica-->
+  <ng-template #showLogin>
+    <p>Please login: <button class="btn btn-primary" (click)="login()">Login with Google</button></p>    
+  </ng-template>
 </div>
