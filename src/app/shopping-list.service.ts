@@ -7,15 +7,12 @@ import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 @Injectable()
 export class ShoppingListService {
   
-  private listItems: Array<any>;
-
   //Com o angularfire eu trabalho com Obervables e não com array
   public listItemsFirebase: Observable<any[]>;
   private listItemsRef: AngularFireList<any>;
 
   //Injeção de dependências private httpClient: HttpClient eprivate db: AngularFireDatabase
-  constructor(private httpClient: HttpClient, private db: AngularFireDatabase) { 
-    this.listItems =[];
+  constructor(private httpClient: HttpClient, private db: AngularFireDatabase) {
     this.listItemsRef = this.db.list('items');
 
     //snapshotChanges = fica observando as modificações feitas na lista
@@ -53,8 +50,7 @@ export class ShoppingListService {
     //Removendo a propriedade key do item
     delete item.key;
 
-    //Também posso usar o verbo put
-    return this.httpClient.patch(`${environment.firebase.databaseURL}/items/${key}.json`, item);
+    this.listItemsRef.update(key, item);
   }
 
 }

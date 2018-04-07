@@ -33,13 +33,7 @@ export class ShoppingListItemComponent implements OnInit {
       key: this.listItem.key,
       name: this.listItem.name, 
       disabled: true }
-
     
-    this.myShoppingListService.edit(itemEdited).subscribe(
-      response => {
-        console.log("Item editado");
-        this.listItem.disabled = true;
-      }
-    );
+    this.myShoppingListService.edit(itemEdited);
   }
 }
