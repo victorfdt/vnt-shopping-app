@@ -43,7 +43,13 @@ export class ShoppingListService {
   }
 
   public edit(item) {
-    return this.httpClient.put(`${environment.firebase.databaseURL}/items/${item.key}.json`, item);
+    let key = item.key;
+
+    //Removendo a propriedade key do item
+    delete item.key;
+
+    //Também posso usar o verbo put
+    return this.httpClient.patch(`${environment.firebase.databaseURL}/items/${item.key}.json`, item);
   }
 
 }

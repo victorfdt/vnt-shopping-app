@@ -33,10 +33,13 @@ export class ShoppingListItemComponent implements OnInit {
   }
 
   public crossItem(){
+    //Ao invés de fazer o let, poderia copiar a variável TODO
     let itemEdited = { 
       key: this.listItem.key,
       name: this.listItem.name, 
       disabled: true }
+
+    
     this.myShoppingListService.edit(itemEdited).subscribe(
       response => {
         console.log("Item editado");

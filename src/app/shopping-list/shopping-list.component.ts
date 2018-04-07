@@ -46,6 +46,7 @@ export class ShoppingListComponent implements OnInit {
     }
 
     //Adicionar
+    //O response['name'] retorna o id
     this.myShoppingListService.add(newItem).subscribe(
       response => {
         console.log(response);
