@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../environments/environment';
 
 @Injectable()
 export class ShoppingListService {
 
   private listItems: Array<any>;
 
-  constructor() { 
+  //Injeção de dependências httpClient: HttpClient
+  constructor(private httpClient: HttpClient) { 
     this.listItems =[{
       name: 'Bread',
       disabled: false
@@ -26,7 +29,10 @@ export class ShoppingListService {
   }
 
   public add(item){
-    this.listItems.unshift(item);
+    //A crase ativa o modulo de interpolação
+    //=> forma sucinta de declarar funções
+    this.httpClient.post(`${environment.firebase.databaseURL}/items.json`, item).subscribe(
+      response => {console.log('deu certo')});
   }
 
   public remove(item){
