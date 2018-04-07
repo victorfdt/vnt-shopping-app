@@ -24,12 +24,7 @@ export class ShoppingListItemComponent implements OnInit {
   }
 
   public removeItem() {
-    this.myShoppingListService.remove(this.listItem).subscribe(
-      response => {
-        console.log("o item foi excluído!");
-        this.deleted = true;
-      }
-    );
+    this.myShoppingListService.remove(this.listItem);
   }
 
   public crossItem(){

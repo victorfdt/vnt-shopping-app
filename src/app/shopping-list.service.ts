@@ -39,7 +39,12 @@ export class ShoppingListService {
   }
 
   public remove(item){
-    return this.httpClient.delete(`${environment.firebase.databaseURL}/items/${item.key}.json`);
+    this.listItemsRef.remove(item.key);
+  }
+
+  //Remove todos os itens da lista
+  public removeAll(){
+    this.listItemsRef.remove();
   }
 
   public edit(item) {
