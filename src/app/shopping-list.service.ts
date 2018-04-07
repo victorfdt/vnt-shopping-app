@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../environments/environment';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class ShoppingListService {
@@ -24,15 +25,15 @@ export class ShoppingListService {
     }];
   }
 
-  public findAll(): Array<any> {
-    return this.listItems;
+  //Observable é o retorno
+  public findAll(): Observable<Object> {
+    return this.httpClient.get(`${environment.firebase.databaseURL}/items.json`);
   }
 
-  public add(item){
+  public add(item): Observable<Object>{
     //A crase ativa o modulo de interpolação
     //=> forma sucinta de declarar funções
-    this.httpClient.post(`${environment.firebase.databaseURL}/items.json`, item).subscribe(
-      response => {console.log('deu certo')});
+    return this.httpClient.post(`${environment.firebase.databaseURL}/items.json`, item);
   }
 
   public remove(item){

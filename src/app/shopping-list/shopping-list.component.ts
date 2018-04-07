@@ -16,7 +16,25 @@ export class ShoppingListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.list = this.myShoppingListService.findAll();
+    //Isso agora retorna um Observable
+    //Object.keys = retorna o nome de todas as propriedades de um objeto
+    //map é uma função que passa item a item e faz alguma coisa com o valor
+    //Essa abordagem é necessária porque o firebase não trabalha com array, só com objeto
+    this.myShoppingListService.findAll().subscribe(
+      response => {
+        if(response) {
+          this.list = Object.keys(response).map(id => {
+            let item: any = response[id];
+            item.key = id;
+            return item;
+          })
+        } else {
+          this.list = [];
+        }
+      },
+      error => { console.log(error) }
+    )
+
     console.log(this.list);
   }
 
@@ -28,7 +46,14 @@ export class ShoppingListComponent implements OnInit {
     }
 
     //Adicionar
-    this.myShoppingListService.add(newItem);
+    this.myShoppingListService.add(newItem).subscribe(
+      response => {
+        console.log(response);
+        newItem['key'] = response['name'];
+        this.list.unshift(newItem); 
+      },
+      error => { console.error('Erro'); }
+    );
     this.itemToAdd = '';
   }
 
