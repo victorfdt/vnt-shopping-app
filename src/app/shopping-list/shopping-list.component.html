@@ -1,19 +1,15 @@
-<form>
-  <div class="input-group mt-3">
-    <!-- two way data bind =  [(ngModel)]-->
-    <input type="text" class="form-control" placeholder="Item name" [(ngModel)]="itemToAdd" name="myInput">
-    <button type="submit" class="btn btn-primary"
-        (click)="addObjectToList()">Add</button>
+<form class="navbar-form" role="search">
+  <div class="input-group">
+    <input type="text" class="form-control col-sm-3" placeholder="Pesquisar livro" [(ngModel)]="itemToAdd" name="myInput">
+    <span class="input-group-btn">
+      <button type="submit" class="btn btn-primary ml-1" (click)="addObjectToList()">Buscar</button>
+    </span>
   </div>
 </form>
 
-<br>
-
+<h5>Livros encontrados</h5>
 <ul class="list-group">
-
   <!-- Toda diretiva estrutural tem * -->
-  <app-shopping-list-item 
-      *ngFor="let item of list | async"
-      [shoppingItem]="item">
-  </app-shopping-list-item>  
+  <app-shopping-list-item *ngFor="let item of list | async" [shoppingItem]="item">
+  </app-shopping-list-item>
 </ul>
