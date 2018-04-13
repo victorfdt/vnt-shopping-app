@@ -1,13 +1,25 @@
 <header class="jumbotron p-3 mt-3">
-  <h1>Shopping Cart</h1>
+  <h3>Livros dos Elfos</h3>
+
+  <!-- Left navbar -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light mt-3">
-    <ul class="navbar-nav">
+    <ul class="nav nav-pills">
       <li class="nav-item">
-        <a routerLink="/shopping-list" class="nav-link">My Shopping Cart</a>
+        <a routerLink="/about" class="nav-link active">Cadastrar Livros</a>
       </li>
       <li class="nav-item">
-        <a routerLink="/about" class="nav-link">About</a>
+        <a routerLink="/about" class="nav-link" id="aboutButton">Sobre</a>
+      </li>
+    </ul>
+
+    <!--Right navbar-->
+    <ul class="nav nav-pills navbar-right">
+      <li class="nav-item">
+        <a routerLink="/shopping-list" class="nav-link disabled">Meu Carrinho</a>
       </li>
     </ul>
   </nav>
+
+
+
 </header>
