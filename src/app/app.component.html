@@ -6,11 +6,11 @@
 
   <div *ngIf="authService.afAuth.authState | async as user; else showLogin">
     <div class="row">
-      <div class="col">
+      <div class="col-8">
         Hi {{ user.displayName }}!
         <fa name="far fa-user"></fa>
       </div>
-      <div class="col text-right">
+      <div class="col-4 text-right">
         <button class="btn btn-primary" (click)="logout()">Logout</button>
       </div>
     </div>
@@ -36,7 +36,7 @@
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
         <br>
         <button class="btn btn-google" (click)="login()">Login with Google <fa name="far fa-google"></fa></button>
-        <p class="mt-5 mb-3 text-muted">© 2017-2018</p>
+        <p class="mt-5 mb-3 text-muted">© 2018</p>
       </form>
     </div>
   </ng-template>
