@@ -21,6 +21,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { ShoppingStoreComponent } from './shopping-list/shopping-store/shopping-store.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
     HeaderComponent,
     ShoppingListComponent,
     ShoppingListItemComponent,
-    AboutComponent
+    AboutComponent,
+    ShoppingStoreComponent
   ],
   imports: [
     BrowserModule,

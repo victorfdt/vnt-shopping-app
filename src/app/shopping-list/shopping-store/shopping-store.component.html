@@ -1,0 +1,36 @@
+<p>
+  <b>Cadastrar livro</b>
+</p>
+<form>
+  <div class="form-group">
+    <label for="bookName">Nome</label>
+    <input type="text" class="form-control col-md-3" [(ngModel)]="bookName" id="bookName" name="bookName" placeholder="Ex: The Witcher: A Espada do Destino">
+  </div>
+  <div class="form-group">
+    <label for="description">Autor</label>
+    <input type="text" class="form-control col-md-3" [(ngModel)]="author" id="author" name="author" placeholder="Ex: Andrzej Sapkowski">
+  </div>
+  <div class="form-group">
+    <label for="quantity">Quantidade em estoque</label>
+    <input type="text" class="form-control col-md-3" [(ngModel)]="quantity" id="quantity" name="quantity" placeholder="Ex: 10">
+  </div>
+  <button type="submit" class="btn btn-primary" (click)="addBook()">Salvar</button>
+</form>
+<hr>
+<p>
+  <b>Alterar Livros Cadastrados</b>
+</p>
+
+
+<div *ngFor="let book of books | async">
+  <li class="list-group-item">
+    <span>{{ book.name }}</span>
+    <span>{{ book.author }}</span>
+    <span>{{ book.quantity }}</span>
+    <span class="float-right">
+      <span class="badge badge-danger" (click)="removeItem()">
+        <fa name="fas fa-times-circle"></fa>
+      </span>
+    </span>
+  </li>
+</div>

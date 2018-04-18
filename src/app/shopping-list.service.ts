@@ -13,7 +13,10 @@ export class ShoppingListService {
 
   //Injeção de dependências private httpClient: HttpClient eprivate db: AngularFireDatabase
   constructor(private httpClient: HttpClient, private db: AngularFireDatabase) {
-    this.listItemsRef = this.db.list('items');
+    // OLD this.listItemsRef = this.db.list('items');
+
+    //TODO Esse é o nome do meu banco?
+    this.listItemsRef = this.db.list('books');
 
     //snapshotChanges = fica observando as modificações feitas na lista
     this.listItemsFirebase = this.listItemsRef.snapshotChanges().map(
@@ -23,7 +26,9 @@ export class ShoppingListService {
           return {
             key: c.payload.key,
             name: c.payload.val()['name'],
-            disabled: c.payload.val()['disabled'],
+            author: c.payload.val()['author'],
+            quantity: c.payload.val()['quantity']
+
           }
         }
         ).reverse();
@@ -53,7 +58,7 @@ export class ShoppingListService {
     this.listItemsRef.update(key, item);
   }
 
-  public find(item){
+  public find(item) {
     //TODO 
   }
 
