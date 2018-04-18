@@ -2,7 +2,7 @@
   <h3>Livro dos Elfos</h3>
 
   <!-- Left navbar -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light mb-2">
     <ul class="nav">
       <li class="nav-item">
         <a routerLink="/about" class="nav-link">Cadastrar</a>
@@ -21,4 +21,14 @@
       </li>
     </ul>
   </nav>
+
+  <!--Searchin form -->
+  <form class="navbar-form" role="search">
+    <div class="input-group">
+      <input type="text" class="form-control col-sm-3" placeholder="Pesquisar livro" [(ngModel)]="itemToAdd" name="myInput">
+      <span class="input-group-btn">
+        <button type="submit" class="btn btn-primary ml-1" (click)="addObjectToList()">Buscar</button>
+      </span>
+    </div>
+  </form>
 </header>

@@ -6,7 +6,7 @@ import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 
 @Injectable()
 export class ShoppingListService {
-  
+
   //Com o angularfire eu trabalho com Obervables e não com array
   public listItemsFirebase: Observable<any[]>;
   private listItemsRef: AngularFireList<any>;
@@ -18,29 +18,29 @@ export class ShoppingListService {
     //snapshotChanges = fica observando as modificações feitas na lista
     this.listItemsFirebase = this.listItemsRef.snapshotChanges().map(
       changes => {
-        return changes.map( c => {
-            console.log(c.payload.val());
-            return {
-              key: c.payload.key,
-              name: c.payload.val()['name'],
-              disabled: c.payload.val()['disabled'],
-            }
+        return changes.map(c => {
+          console.log(c.payload.val());
+          return {
+            key: c.payload.key,
+            name: c.payload.val()['name'],
+            disabled: c.payload.val()['disabled'],
           }
+        }
         ).reverse();
       }
     );
   }
 
-  public add(item){
+  public add(item) {
     this.listItemsRef.push(item);
   }
 
-  public remove(item){
+  public remove(item) {
     this.listItemsRef.remove(item.key);
   }
 
   //Remove todos os itens da lista
-  public removeAll(){
+  public removeAll() {
     this.listItemsRef.remove();
   }
 
@@ -51,6 +51,10 @@ export class ShoppingListService {
     delete item.key;
 
     this.listItemsRef.update(key, item);
+  }
+
+  public find(item){
+    //TODO 
   }
 
 }
