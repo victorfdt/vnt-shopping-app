@@ -17,7 +17,7 @@ export class ShoppingStoreComponent implements OnInit {
   bookName: string;
   author: string;
   quantity: number;
-  price : number;
+  price: number;
 
   constructor(private myShoppingListService: ShoppingListService) { }
 
@@ -25,15 +25,19 @@ export class ShoppingStoreComponent implements OnInit {
     this.books = this.myShoppingListService.listItemsFirebase;
   }
 
-  private addBook() {
-    
+  private add() {
+
     this.book.name = this.bookName;
     this.book.author = this.author;
-    this.book.quantity = this.quantity;   
+    this.book.quantity = this.quantity;
     this.book.price = this.price;
 
     //Adicionar    
     this.myShoppingListService.add(this.book);
+  }
+
+  private delete(book: Book) {
+    this.myShoppingListService.delete(book);
   }
 
 }

@@ -40,7 +40,7 @@ export class ShoppingListService {
     this.listItemsRef.push(item);
   }
 
-  public remove(item) {
+  public delete(item) {
     this.listItemsRef.remove(item.key);
   }
 

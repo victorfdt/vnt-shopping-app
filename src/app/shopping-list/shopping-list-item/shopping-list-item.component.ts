@@ -23,8 +23,8 @@ export class ShoppingListItemComponent implements OnInit {
     // console.log(this.listItem);
   }
 
-  public removeItem() {
-    this.myShoppingListService.remove(this.listItem);
+  public deleteItem() {
+    this.myShoppingListService.delete(this.listItem);
   }
 
   public crossItem(){
