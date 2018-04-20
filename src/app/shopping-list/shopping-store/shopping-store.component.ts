@@ -13,10 +13,11 @@ export class ShoppingStoreComponent implements OnInit {
   public books: Observable<any[]>;
 
   //TODO eles devem ser private?
-  book: Book;
+  book: Book = new Book;
   bookName: string;
   author: string;
   quantity: number;
+  price : number;
 
   constructor(private myShoppingListService: ShoppingListService) { }
 
@@ -25,21 +26,14 @@ export class ShoppingStoreComponent implements OnInit {
   }
 
   private addBook() {
-    //Criar o objeto
-    /* TODO Por que nao posso fazer assim?
+    
     this.book.name = this.bookName;
     this.book.author = this.author;
-    this.book.quantity = this.quantity;
-    */
-    debugger;
-    let newBook = {
-      name: this.bookName,
-      author: this.author,
-      quantity: this.quantity
-    }
+    this.book.quantity = this.quantity;   
+    this.book.price = this.price;
 
     //Adicionar    
-    this.myShoppingListService.add(newBook);
+    this.myShoppingListService.add(this.book);
   }
 
 }

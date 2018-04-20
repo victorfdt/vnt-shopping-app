@@ -27,8 +27,8 @@ export class ShoppingListService {
             key: c.payload.key,
             name: c.payload.val()['name'],
             author: c.payload.val()['author'],
-            quantity: c.payload.val()['quantity']
-
+            quantity: c.payload.val()['quantity'],
+            price: c.payload.val()['price']
           }
         }
         ).reverse();
