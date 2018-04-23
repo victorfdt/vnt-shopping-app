@@ -26,9 +26,9 @@
   <!--Searchin form -->
   <form class="navbar-form" role="search">
     <div class="input-group">
-      <input type="text" id="inputNameBook"class="form-control col-md-3" placeholder="Pesquisar livro por nome" [(ngModel)]="itemToAdd" name="myInput">
+      <input type="text" id="bookToSearch"class="form-control col-md-3" placeholder="Pesquisar livro por nome" [(ngModel)]="bookToSearch" name="bookToSearch">
       <span class="input-group-btn">
-        <button type="submit" class="btn btn-primary ml-1" (click)="addObjectToList()">Buscar</button>
+        <button type="submit" class="btn btn-primary ml-1" (click)="searchBook()">Buscar</button>
       </span>
     </div>
   </form>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ShoppingListService } from '../shopping-list.service';
+import { Book } from '../Book';
 
 @Component({
   selector: 'app-header',
@@ -7,11 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  private bookToAdd: string = "";
+  private bookToSearch: string = "";
+  
 
-  constructor() { }
+  constructor(private myShoppingListService: ShoppingListService) { }
 
   ngOnInit() {
+  }
+
+  searchBook(){
+    let book: Book;
+
+    book = this.myShoppingListService.findByName(this.bookToSearch);
   }
 
 }

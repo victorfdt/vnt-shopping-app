@@ -58,8 +58,11 @@ export class ShoppingListService {
     this.listItemsRef.update(key, item);
   }
 
-  public find(item) {
-    //TODO 
+  public findByName(name: string) {
+  }
+
+  public cleanCart() {
+
   }
 
 }

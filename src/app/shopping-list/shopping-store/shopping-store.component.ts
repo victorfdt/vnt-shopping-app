@@ -40,4 +40,8 @@ export class ShoppingStoreComponent implements OnInit {
     this.myShoppingListService.delete(book);
   }
 
+  private edit(){
+    
+  }
+
 }
