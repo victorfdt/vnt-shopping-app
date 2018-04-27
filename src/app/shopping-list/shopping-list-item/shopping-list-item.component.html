@@ -1,3 +1,13 @@
+<tr>
+  <td>{{ selectedBook.name }}</td>
+  <td>{{ selectedBook.author }}</td>
+  <td>{{ selectedBook.price }}</td>
+  <td>
+    <button class="btn btn-danger btn-block" (click)="addToCart(selectedBook)">Comprar</button>
+  </td>
+</tr>
+
+<!--
 <li class="list-group-item" *ngIf="!deleted" [ngClass]="{ 'disabled' : listItem.disabled }">
   <span>{{ listItem.name }}</span>
   <span class="float-right" *ngIf="!listItem.disabled">
@@ -9,3 +19,4 @@
     </span>
   </span>
 </li>
+-->
