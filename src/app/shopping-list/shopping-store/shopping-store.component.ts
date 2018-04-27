@@ -26,7 +26,6 @@ export class ShoppingStoreComponent implements OnInit {
   }
 
   private add() {
-
     this.book.name = this.bookName;
     this.book.author = this.author;
     this.book.quantity = this.quantity;
@@ -36,7 +35,7 @@ export class ShoppingStoreComponent implements OnInit {
     this.myShoppingListService.add(this.book);
   }
 
-  private delete(book: Book) {
+  public removeBook(book: Book) {
     this.myShoppingListService.delete(book);
   }
 

@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ShoppingListService } from '../shopping-list.service';
 import { Observable } from 'rxjs/Observable';
+import { Book } from '../Book';
 
 @Component({
   selector: 'app-shopping-list',
@@ -9,12 +10,16 @@ import { Observable } from 'rxjs/Observable';
 })
 export class ShoppingListComponent implements OnInit {
 
-  public list: Observable<any[]>;
+  @Input("mode") mode: string;
+  bookRow: Book;
+
+  public booksList: Observable<any[]>;
 
   constructor(private myShoppingListService: ShoppingListService) {
   }
 
-  ngOnInit() {
-    this.list = this.myShoppingListService.listItemsFirebase;
+  ngOnInit() {    
+    this.booksList = this.myShoppingListService.listItemsFirebase;
+    console.log(this.mode);
   }
 }

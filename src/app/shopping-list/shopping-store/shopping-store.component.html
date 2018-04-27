@@ -1,41 +1,62 @@
-<p>
-  <b>Cadastrar livro</b>
-</p>
-<form>
-  <div class="form-group">
-    <label for="bookName">Nome</label>
-    <input type="text" class="form-control col-md-3" [(ngModel)]="bookName" id="bookName" name="bookName" placeholder="Ex: The Witcher: A Espada do Destino">
+<!-- Record a book-->
+
+<div class="row">
+  <div class="col-lg-6">
+    <h3>Cadastrar livro</h3>
+    <form>
+      <div class="form-group">
+        <label for="bookName">Nome</label>
+        <input type="text" class="form-control col-lg-8" [(ngModel)]="bookName" id="bookName" name="bookName" placeholder="Ex: The Witcher: A Espada do Destino">
+      </div>
+      <div class="form-group">
+        <label for="description">Autor</label>
+        <input type="text" class="form-control col-lg-8" [(ngModel)]="author" id="author" name="author" placeholder="Ex: Andrzej Sapkowski">
+      </div>
+      <div class="form-group">
+        <label for="quantity">Quantidade em estoque</label>
+        <input type="number" class="form-control col-lg-8" [(ngModel)]="quantity" id="quantity" name="quantity" placeholder="Ex: 10">
+      </div>
+      <div class="form-group">
+        <label for="quantity">Preço</label>
+        <input type="number" class="form-control col-lg-8" [(ngModel)]="price" id="price" name="price" placeholder="R$15,00">
+      </div>
+      <button type="submit" class="btn btn-primary" (click)="add()">Salvar</button>
+    </form>
   </div>
-  <div class="form-group">
-    <label for="description">Autor</label>
-    <input type="text" class="form-control col-md-3" [(ngModel)]="author" id="author" name="author" placeholder="Ex: Andrzej Sapkowski">
-  </div>
-  <div class="form-group">
-    <label for="quantity">Quantidade em estoque</label>
-    <input type="number" class="form-control col-md-3" [(ngModel)]="quantity" id="quantity" name="quantity" placeholder="Ex: 10">
-  </div>
-  <div class="form-group">
-    <label for="quantity">Preço</label>
-    <input type="number" class="form-control col-md-3" [(ngModel)]="price" id="price" name="price" placeholder="R$15,00">
-  </div>
-  <button type="submit" class="btn btn-primary" (click)="add()">Salvar</button>
-</form>
-<hr>
-<p>
-  <b>Alterar Livros Cadastrados</b>
-</p>
+
+  <div class="col-lg-6">
+    <h3>Livros Cadastrados</h3>
 
 
-<div *ngFor="let book of books | async">
-  <li class="list-group-item">
-    <span>{{ book.name }}</span>
-    <span>{{ book.author }}</span>
-    <span>{{ book.quantity }}</span>
-    <span>{{ book.price }}</span>
-    <span class="float-right">
-      <span class="badge badge-danger" (click)="delete(book)">
-        <fa name="fas fa-times-circle"></fa>
-      </span>
-    </span>
-  </li>
+    <div class="table-responsive" >
+      <table class="table table-hover">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">Nome</th>
+            <th scope="col">Autor(a)</th>
+            <th scope="col">Preço</th>
+            <th scope="col">Quantidade</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <!--Ocorre o erro: Can't bind to 'bookRow' since it isn't a known property of 'tr'.
+            <tr *ngFor="let book of books | async" app-shopping-list-item [bookRow]="book" [mode]="mode">
+            </tr>-->
+          <tr *ngFor="let book of books | async">
+            <td>{{ book.name }}</td>
+            <td>{{ book.author }}</td>
+            <td>{{ book.price }}</td>
+            <td>{{ book.quantity }}</td>
+            <td>
+              <button class="btn btn-danger btn-block" (click)="removeBook(book)">Remover
+                <fa name="far fa-trash"></fa>
+              </button>
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>

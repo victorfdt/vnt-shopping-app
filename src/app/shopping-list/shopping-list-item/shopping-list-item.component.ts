@@ -8,32 +8,47 @@ import { ShoppingListService } from '../../shopping-list.service';
 })
 export class ShoppingListItemComponent implements OnInit {
 
-  //O nome da variável é listItem e o nome do parâmetro é item
-  @Input("shoppingItem") private listItem: any;
-  
+  //O nome da variável é selectedBook e o nome do parâmetro é item
+  @Input("bookRow") book: any;
+  @Input("mode") mode: string;
+  //@Input() bookRow: any;
+
   //É do componente, o objeto não vai ter essa variável
   public deleted: boolean = false;
 
-  constructor(private myShoppingListService: ShoppingListService) {    
-   }
+  constructor(private myShoppingListService: ShoppingListService) {
+  }
 
   //Hook para click de vida
   //Sempre que o componente for construído ou iniciado.
   ngOnInit() {
-    // console.log(this.listItem);
   }
 
   public deleteItem() {
-    this.myShoppingListService.delete(this.listItem);
+    this.myShoppingListService.delete(this.book);
   }
 
-  public crossItem(){
+  public crossItem() {
     //Ao invés de fazer o let, poderia copiar a variável TODO
-    let itemEdited = { 
-      key: this.listItem.key,
-      name: this.listItem.name, 
-      disabled: true }
-    
+    let itemEdited = {
+      key: this.book.key,
+      name: this.book.name,
+      disabled: true
+    }
+
     this.myShoppingListService.edit(itemEdited);
+  }
+
+  public addToCart(book) {
+    let bookEdited = {
+      key: this.book.key,
+      name: this.book.name,
+      price: this.book.price,
+      quantity: this.book.price
+    }
+
+    console.log(bookEdited);
+    //this.myShoppingListService.edit(bookEdited);
+
   }
 }
