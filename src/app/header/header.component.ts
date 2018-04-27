@@ -20,7 +20,7 @@ export class HeaderComponent implements OnInit {
   searchBook(){
     let book: Book;
 
-    book = this.myShoppingListService.findByName(this.bookToSearch);
+    this.myShoppingListService.findByName(this.bookToSearch);
   }
 
 }

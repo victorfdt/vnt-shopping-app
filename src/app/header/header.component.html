@@ -5,13 +5,22 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-light mb-2">
     <ul class="nav">
       <li class="nav-item">
-        <a routerLink="/shopping-store" class="nav-link">Cadastrar</a>
+        <a routerLink="/shopping-list" class="nav-link btn-info">Livros
+          <fa name="far fa-book"></fa>
+        </a>
       </li>
       <li class="nav-item">
-        <a routerLink="/about" class="nav-link" id="aboutButton">Sobre</a>
+        <a routerLink="/shopping-store" class="nav-link btn-info">Cadastrar
+          <fa name="far fa-pencil"></fa>
+        </a>
       </li>
       <li class="nav-item">
-        <a routerLink="/shopping-list" class="nav-link disabled">Carrinho
+        <a routerLink="/about" class="nav-link btn-info" id="aboutButton">Sobre
+          <fa name="far fa-building"></fa>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/shopping-cart" class="nav-link btn-info">Carrinho
           <fa name="far fa-shopping-cart"></fa>
         </a>
       </li>
@@ -23,13 +32,15 @@
     </ul>
   </nav>
 
-  <!--Searchin form -->
+  <!--Searchin form 
   <form class="navbar-form" role="search">
     <div class="input-group">
-      <input type="text" id="bookToSearch"class="form-control col-md-3" placeholder="Pesquisar livro por nome" [(ngModel)]="bookToSearch" name="bookToSearch">
+      <input type="text" id="bookToSearch" class="form-control col-md-3" placeholder="Nome do livro" [(ngModel)]="bookToSearch"
+        name="bookToSearch">
       <span class="input-group-btn">
         <button type="submit" class="btn btn-primary ml-1" (click)="searchBook()">Buscar</button>
       </span>
     </div>
   </form>
+  -->
 </header>

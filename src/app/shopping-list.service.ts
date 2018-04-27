@@ -2,18 +2,20 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../environments/environment';
 import { Observable } from 'rxjs/Observable';
-import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { AngularFireDatabase, AngularFireAction, AngularFireList } from 'angularfire2/database';
+import { Book } from './Book';
 
 @Injectable()
 export class ShoppingListService {
 
   //Com o angularfire eu trabalho com Obervables e não com array
   public listItemsFirebase: Observable<any[]>;
+  public myList: Observable<any[]>;
   private listItemsRef: AngularFireList<any>;
 
   //Injeção de dependências private httpClient: HttpClient eprivate db: AngularFireDatabase
   constructor(private httpClient: HttpClient, private db: AngularFireDatabase) {
-    // OLD this.listItemsRef = this.db.list('items');
 
     //TODO Esse é o nome do meu banco?
     this.listItemsRef = this.db.list('books');
@@ -59,10 +61,9 @@ export class ShoppingListService {
   }
 
   public findByName(name: string) {
-  }
-
-  public cleanCart() {
+   
 
   }
+
 
 }
