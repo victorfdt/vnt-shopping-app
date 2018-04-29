@@ -26,6 +26,7 @@ export class ShoppingStoreComponent implements OnInit {
   }
 
   private add() {
+    console.log(this.price);
     this.book.name = this.bookName;
     this.book.author = this.author;
     this.book.quantity = this.quantity;
