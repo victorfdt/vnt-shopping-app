@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ShoppingListService } from '../shopping-list.service';
+import { ShoppingCartService } from '../shopping-cart.service';
 import { Observable } from 'rxjs/Observable';
 import { Book } from '../Book';
 
@@ -15,11 +16,17 @@ export class ShoppingListComponent implements OnInit {
 
   public booksList: Observable<any[]>;
 
-  constructor(private myShoppingListService: ShoppingListService) {
+  constructor(
+    private myShoppingListService: ShoppingListService,
+    private myShoppingCartService: ShoppingCartService) {
   }
 
-  ngOnInit() {    
+  ngOnInit() {
     this.booksList = this.myShoppingListService.listItemsFirebase;
     console.log(this.mode);
+  }
+
+  public addToCart(book: Book) {
+    this.myShoppingCartService.add(book);
   }
 }

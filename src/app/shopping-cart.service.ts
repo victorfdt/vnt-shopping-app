@@ -3,7 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import { AngularFireDatabase, AngularFireAction, AngularFireList } from 'angularfire2/database';
 
 @Injectable()
-export class ShoppingCartServiceService {
+export class ShoppingCartService {
 
   public cartFirebase: Observable<any[]>;
   private cartRef: AngularFireList<any>;
@@ -29,12 +29,12 @@ export class ShoppingCartServiceService {
     );
   }
 
-  public add(item) {
-    this.cartRef.push(item);
+  public add(book) {
+    this.cartRef.push(book);
   }
 
-  public delete(item) {
-    this.cartRef.remove(item.key);
+  public delete(book) {
+    this.cartRef.remove(book.key);
   }
 
   //Remove todos os itens da lista

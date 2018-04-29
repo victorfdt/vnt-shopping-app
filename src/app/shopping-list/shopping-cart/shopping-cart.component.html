@@ -1,0 +1,35 @@
+<h3>Livros no Carrinho</h3>
+<div class="row">  
+  <div class="col-lg-6 offset-lg-3">
+    <div class="table-responsive">
+      <table class="table table-hover">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">Nome</th>
+            <th scope="col">Autor(a)</th>
+            <th scope="col">Preço</th>
+            <th scope="col">Quantidade</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <!--Ocorre o erro: Can't bind to 'bookRow' since it isn't a known property of 'tr'.
+                <tr *ngFor="let book of books | async" app-shopping-list-item [bookRow]="book" [mode]="mode">
+                </tr>-->
+          <tr *ngFor="let book of books | async">
+            <td>{{ book.name }}</td>
+            <td>{{ book.author }}</td>
+            <td>{{ book.price }}</td>
+            <td>{{ book.quantity }}</td>
+            <td>
+              <button class="btn btn-danger btn-block" (click)="removeBook(book)">Remover
+                <fa name="far fa-trash"></fa>
+              </button>
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

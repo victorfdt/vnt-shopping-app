@@ -8,6 +8,7 @@ import { HeaderComponent } from './header/header.component';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { ShoppingListItemComponent } from './shopping-list/shopping-list-item/shopping-list-item.component';
 import { ShoppingListService } from './shopping-list.service';
+import { ShoppingCartService } from './shopping-cart.service';
 import { RouterModule } from '@angular/router';
 import { AboutComponent } from './about/about.component';
 import { AuthService } from './auth.service';
@@ -22,6 +23,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { ShoppingStoreComponent } from './shopping-list/shopping-store/shopping-store.component';
+import { ShoppingCartComponent } from './shopping-list/shopping-cart/shopping-cart.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { ShoppingStoreComponent } from './shopping-list/shopping-store/shopping-
     ShoppingListComponent,
     ShoppingListItemComponent,
     AboutComponent,
-    ShoppingStoreComponent
+    ShoppingStoreComponent,
+    ShoppingCartComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +47,8 @@ import { ShoppingStoreComponent } from './shopping-list/shopping-store/shopping-
   ],
   providers: [
     AuthService,
-    ShoppingListService
+    ShoppingListService,
+    ShoppingCartService
   ],
   bootstrap: [AppComponent]
 })
