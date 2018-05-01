@@ -42,4 +42,13 @@ export class ShoppingCartService {
     this.cartRef.remove();
   }
 
+  public edit(book) {
+    let key = book.key;
+
+    //Removendo a propriedade key do book
+    delete book.key;
+
+    this.cartRef.update(key, book);
+  }
+
 }

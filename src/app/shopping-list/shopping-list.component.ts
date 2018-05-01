@@ -27,6 +27,23 @@ export class ShoppingListComponent implements OnInit {
   }
 
   public addToCart(book: Book) {
-    this.myShoppingCartService.add(book);
+    debugger;
+
+    /** When adding a book in the shopping cart, I need to subtract
+     * a book from the store.
+     */
+    var bookToCart = book;
+    var  bookToStore = book;
+    var oldQuantity = bookToStore.quantity;
+
+    //Adding the book in the cart
+    this.booksList;
+    bookToCart.quantity = 1;
+    
+    this.myShoppingCartService.add(bookToCart);
+
+    //Updating the book in the store
+    bookToStore.quantity = oldQuantity - 1;
+    this.myShoppingListService.edit(bookToStore);
   }
 }

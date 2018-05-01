@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../environments/environment';
 import { Observable } from 'rxjs/Observable';
 import { AngularFireDatabase, AngularFireAction, AngularFireList } from 'angularfire2/database';
+import { ShoppingCartService } from './shopping-cart.service';
 import { Book } from './Book';
 
 @Injectable()
@@ -14,7 +15,11 @@ export class ShoppingListService {
   private listItemsRef: AngularFireList<any>;
 
   //Injeção de dependências private httpClient: HttpClient eprivate db: AngularFireDatabase
-  constructor(private httpClient: HttpClient, private db: AngularFireDatabase) {
+  constructor(
+    private httpClient: HttpClient,
+    private db: AngularFireDatabase,
+    private myShoppingCartService: ShoppingCartService
+  ) {
 
     //TODO Esse é o nome do meu banco?
     this.listItemsRef = this.db.list('books');
@@ -37,8 +42,12 @@ export class ShoppingListService {
     );
   }
 
-  public add(item) {
-    this.listItemsRef.push(item);
+  public create(book: Book) {
+    this.listItemsRef.push(book);
+  }
+
+  public addToCart(book: Book) {
+    //this.listItemsRef.push(item);
   }
 
   public delete(item) {
@@ -47,10 +56,11 @@ export class ShoppingListService {
 
   //Remove todos os itens da lista
   public removeAll() {
-    this.listItemsRef.remove();
+    this.listItemsRef.remove();   
   }
 
   public edit(item) {
+    debugger;
     let key = item.key;
 
     //Removendo a propriedade key do item
@@ -58,11 +68,4 @@ export class ShoppingListService {
 
     this.listItemsRef.update(key, item);
   }
-
-  public findByName(name: string) {
-   
-
-  }
-
-
 }

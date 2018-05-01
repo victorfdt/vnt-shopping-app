@@ -16,11 +16,5 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
   }
-
-  searchBook(){
-    let book: Book;
-
-    this.myShoppingListService.findByName(this.bookToSearch);
-  }
-
+  
 }

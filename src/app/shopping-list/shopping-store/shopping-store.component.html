@@ -2,7 +2,7 @@
 
 <div class="row">
   <div class="col-lg-6">
-    <h3>Cadastrar livro</h3>
+    <h3 class="mt-2">Cadastrar livro</h3>
     <form>
       <div class="form-group">
         <label for="bookName">Nome</label>
@@ -25,10 +25,8 @@
   </div>
 
   <div class="col-lg-6">
-    <h3>Livros Cadastrados</h3>
-
-
-    <div class="table-responsive" >
+    <h3 class="mt-2">Livros Cadastrados</h3>
+    <div class="table-responsive">
       <table class="table table-hover">
         <thead class="thead-light">
           <tr>
@@ -47,7 +45,13 @@
             <td>{{ book.name }}</td>
             <td>{{ book.author }}</td>
             <td>{{ book.price }}</td>
-            <td>{{ book.quantity }}</td>
+            <td *ngIf="book.quantity == 0" class="text-center">
+              <span>Estoque vendido!
+              </span>
+            </td>
+            <td *ngIf="book.quantity != 0">
+              {{ book.quantity }}
+            </td>
             <td>
               <button class="btn btn-danger btn-block" (click)="removeBook(book)">Remover
                 <fa name="far fa-trash"></fa>

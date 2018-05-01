@@ -32,8 +32,8 @@ export class ShoppingStoreComponent implements OnInit {
     this.book.quantity = this.quantity;
     this.book.price = this.price;
 
-    //Adicionar    
-    this.myShoppingListService.add(this.book);
+    //Creating a new book  
+    this.myShoppingListService.create(this.book);
   }
 
   public removeBook(book: Book) {
