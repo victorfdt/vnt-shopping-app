@@ -60,7 +60,6 @@ export class ShoppingListService {
   }
 
   public edit(item) {
-    debugger;
     let key = item.key;
 
     //Removendo a propriedade key do item

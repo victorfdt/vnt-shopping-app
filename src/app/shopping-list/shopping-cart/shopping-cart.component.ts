@@ -11,6 +11,7 @@ import { Book } from '../../Book';
 export class ShoppingCartComponent implements OnInit {
 
   public books: Observable<any[]>;
+  public totalPrice: number = 10;
 
   book: Book = new Book;
   bookName: string;
@@ -31,8 +32,7 @@ export class ShoppingCartComponent implements OnInit {
     this.myShoppingCartService.delete(book);
   }
 
-  public buyBooks(){
-
+  public sumTotalPrice(price: number) {
+    this.totalPrice = this.totalPrice + price;
   }
-
 }

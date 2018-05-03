@@ -45,10 +45,7 @@ export class ShoppingListItemComponent implements OnInit {
       name: this.book.name,
       price: this.book.price,
       quantity: this.book.price
-    }
-
-    console.log(bookEdited);
-    //this.myShoppingListService.edit(bookEdited);
+    } 
 
   }
 }

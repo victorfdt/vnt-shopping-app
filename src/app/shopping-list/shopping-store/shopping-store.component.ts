@@ -12,7 +12,6 @@ export class ShoppingStoreComponent implements OnInit {
 
   public books: Observable<any[]>;
 
-  //TODO eles devem ser private?
   book: Book = new Book;
   bookName: string;
   author: string;
@@ -38,10 +37,6 @@ export class ShoppingStoreComponent implements OnInit {
 
   public removeBook(book: Book) {
     this.myShoppingListService.delete(book);
-  }
-
-  private edit(){
-    
   }
 
 }

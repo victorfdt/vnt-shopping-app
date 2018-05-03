@@ -27,7 +27,6 @@ export class ShoppingListComponent implements OnInit {
   }
 
   public addToCart(book: Book) {
-    debugger;
 
     /** When adding a book in the shopping cart, I need to subtract
      * a book from the store.
